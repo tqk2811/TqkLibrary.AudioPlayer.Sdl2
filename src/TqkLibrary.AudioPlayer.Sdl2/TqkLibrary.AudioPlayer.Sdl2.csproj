@@ -1,10 +1,44 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net462;net5.0-windows7.0;net6.0-windows7.0;net8.0-windows7.0;</TargetFrameworks>
+		<TargetFrameworks>net462;net5.0-windows7.0;net6.0-windows7.0;net8.0-windows7.0</TargetFrameworks>
 		<ImplicitUsings>enable</ImplicitUsings>
+		<LangVersion>11.0</LangVersion>
 		<Nullable>enable</Nullable>
-		<LangVersion>12.0</LangVersion>
+		<Platforms>AnyCPU;x64;x86</Platforms>
+		<AssemblyVersion>1.0.0</AssemblyVersion>
 	</PropertyGroup>
+
+	<ItemGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+		<None Include="..\x86\Debug\TqkLibrary.AudioPlayer.Sdl2.Native.dll" Link="runtimes\win-x86\native\TqkLibrary.AudioPlayer.Sdl2.Native.dll">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Include="..\x86\Debug\TqkLibrary.AudioPlayer.Sdl2.Native.pdb" Link="runtimes\win-x86\native\TqkLibrary.AudioPlayer.Sdl2.Native.pdb">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Include="..\packages\sdl2.nuget.redist.2.30.2\build\native\bin\Win32\SDL2.dll" Link="runtimes\win-x86\native\SDL2.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+		<None Include="..\x64\Debug\TqkLibrary.AudioPlayer.Sdl2.Native.dll" Link="runtimes\win-x64\native\TqkLibrary.AudioPlayer.Sdl2.Native.dll">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Include="..\x64\Debug\TqkLibrary.AudioPlayer.Sdl2.Native.pdb" Link="runtimes\win-x64\native\TqkLibrary.AudioPlayer.Sdl2.Native.pdb">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Include="..\packages\sdl2.nuget.redist.2.30.2\build\native\bin\x64\SDL2.dll" Link="runtimes\win-x64\native\SDL2.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="TqkLibrary.FFmpeg.GplShared" Version="5.1.2" />
+	</ItemGroup>
+
 
 </Project>
