@@ -2,27 +2,44 @@
 using TqkLibrary.AudioPlayer.Sdl2;
 
 string filePath = ".\\test-tube-194556.mp3";
-while (true)
+SdlDevice? sdlDevice = null;
+int count = 0;
+try
 {
-    using AudioSource audioSource = new AudioSource(filePath);
-    using AudioSource.AVFrame aVFrame = new AudioSource.AVFrame();
-    if (!audioSource.ReadFrame(aVFrame))
+    while (true)
     {
-        throw new ApplicationException();
-    }
-    using SdlDevice sdlDevice = new SdlDevice(aVFrame.Handle);
-
-    do
-    {
-        while (true)
+        using AudioSource audioSource = new AudioSource(filePath);
+        using AudioSource.AVFrame aVFrame = new AudioSource.AVFrame();
+        if (!audioSource.ReadFrame(aVFrame))
         {
-            SdlSourceQueueResult result = sdlDevice.QueueAudio(aVFrame.Handle);
-            if (result == SdlSourceQueueResult.Success)
-                break;//read next
-            else if (result == SdlSourceQueueResult.Failed)
-                return;
-            await Task.Delay(100);//requeue
+            throw new ApplicationException();
         }
-    } while (audioSource.ReadFrame(aVFrame));
-    Console.ReadLine();
+        if (sdlDevice is null)
+            sdlDevice = new SdlDevice(aVFrame.Handle);
+
+        Console.WriteLine($"Start {count}");
+        do
+        {
+            while (true)
+            {
+                SdlSourceQueueResult result = sdlDevice.QueueAudio(aVFrame.Handle);
+                if (result == SdlSourceQueueResult.Success)
+                    break;//read next
+                else if (result == SdlSourceQueueResult.Failed)
+                    return;
+                await Task.Delay(100);//requeue
+            }
+            while (sdlDevice.GetQueuedAudioSize() > 320 * 1024)
+            {
+                await Task.Delay(10);
+            }
+        } while (audioSource.ReadFrame(aVFrame));
+
+        await sdlDevice.WaitUntilPlayCompleteAsync();
+        Console.WriteLine($"End {count++}");
+    }
+}
+finally
+{
+    sdlDevice?.Dispose();
 }
