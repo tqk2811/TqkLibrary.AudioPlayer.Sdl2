@@ -24,7 +24,7 @@ namespace TqkLibrary.AudioPlayer.Sdl2
         internal static extern bool SetDllDirectory(string PathName);
 #endif
 #endif
-        [DllImport("Kernel32.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("Kernel32.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Winapi)]
         internal static extern int GetLastError();
 
 
