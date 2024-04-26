@@ -12,6 +12,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TqkLibrary.AudioPlayer.Sdl2
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleTest", "ConsoleTest\ConsoleTest.csproj", "{74C1E399-B989-49F6-8BD8-112592F1D18B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{510A6BBD-D31C-43FE-A4FA-444AF72C706D}"
+	ProjectSection(SolutionItems) = preProject
+		Build.ps1 = Build.ps1
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,8 +55,8 @@ Global
 		{74C1E399-B989-49F6-8BD8-112592F1D18B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74C1E399-B989-49F6-8BD8-112592F1D18B}.Debug|x64.ActiveCfg = Debug|x64
 		{74C1E399-B989-49F6-8BD8-112592F1D18B}.Debug|x64.Build.0 = Debug|x64
-		{74C1E399-B989-49F6-8BD8-112592F1D18B}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{74C1E399-B989-49F6-8BD8-112592F1D18B}.Debug|x86.Build.0 = Debug|Any CPU
+		{74C1E399-B989-49F6-8BD8-112592F1D18B}.Debug|x86.ActiveCfg = Debug|x86
+		{74C1E399-B989-49F6-8BD8-112592F1D18B}.Debug|x86.Build.0 = Debug|x86
 		{74C1E399-B989-49F6-8BD8-112592F1D18B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74C1E399-B989-49F6-8BD8-112592F1D18B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{74C1E399-B989-49F6-8BD8-112592F1D18B}.Release|x64.ActiveCfg = Release|Any CPU

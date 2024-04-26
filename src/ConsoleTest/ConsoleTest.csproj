@@ -14,13 +14,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\TqkLibrary.AudioPlayer.Sdl2\TqkLibrary.AudioPlayer.Sdl2.csproj" />
+		<ProjectReference Include="..\TqkLibrary.AudioPlayer.Sdl2\TqkLibrary.AudioPlayer.Sdl2.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Update="test-tube-194556.mp3">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
+		<None Update="test-tube-194556.mp3">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
 	</ItemGroup>
 
 
