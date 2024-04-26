@@ -4,7 +4,7 @@ enum SdlSourceQueueResult : INT32
 {
 	SdlSourceQueue_Failed = -1,
 	SdlSourceQueue_Success = 0,
-	SdlSourceQueue_QueueFull = 1,
+	SdlSourceQueue_QueueFailed = 1,
 };
 
 class SdlDevice

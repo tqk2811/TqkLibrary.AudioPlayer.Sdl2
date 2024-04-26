@@ -4,6 +4,6 @@
     {
         Failed = -1,
         Success = 0,
-        QueueFull = 1,
+        QueueFailed = 1,
     }
 }

@@ -123,7 +123,7 @@ SdlSourceQueueResult SdlDevice::QueueAudio(AVFrame* pFrame) {
 		auto msg = SDL_GetError();
 #endif
 
-		return SdlSourceQueueResult::SdlSourceQueue_Failed;
+		return SdlSourceQueueResult::SdlSourceQueue_QueueFailed;
 	}
 	return SdlSourceQueueResult::SdlSourceQueue_Success;
 }
