@@ -10,7 +10,7 @@ namespace TqkLibrary.AudioPlayer.Sdl2
     {
         Failed = -1,
         Stopped = 0,
-        Paused = 1,
-        Playing = 2,
+        Playing = 1,
+        Paused = 2,
     }
 }
