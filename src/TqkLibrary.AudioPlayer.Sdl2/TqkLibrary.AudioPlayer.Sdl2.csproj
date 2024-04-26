@@ -16,7 +16,7 @@
 		<None Include="..\x86\Debug\TqkLibrary.AudioPlayer.Sdl2.Native.pdb" Link="runtimes\win-x86\native\TqkLibrary.AudioPlayer.Sdl2.Native.pdb">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
-		<None Include="..\packages\sdl2.nuget.redist.2.30.2\build\native\bin\Win32\SDL2.dll" Link="runtimes\win-x86\native\SDL2.dll">
+		<None Include="..\x86\Debug\SDL2.dll" Link="runtimes\win-x86\native\SDL2.dll">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 	</ItemGroup>
@@ -28,7 +28,7 @@
 		<None Include="..\x64\Debug\TqkLibrary.AudioPlayer.Sdl2.Native.pdb" Link="runtimes\win-x64\native\TqkLibrary.AudioPlayer.Sdl2.Native.pdb">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
-		<None Include="..\packages\sdl2.nuget.redist.2.30.2\build\native\bin\x64\SDL2.dll" Link="runtimes\win-x64\native\SDL2.dll">
+		<None Include="..\x64\Debug\SDL2.dll" Link="runtimes\win-x64\native\SDL2.dll">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 	</ItemGroup>
