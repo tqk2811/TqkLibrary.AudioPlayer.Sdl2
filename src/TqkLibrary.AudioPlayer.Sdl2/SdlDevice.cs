@@ -59,5 +59,26 @@ namespace TqkLibrary.AudioPlayer.Sdl2
         {
             NativeWrapper.SdlDevice_ClearQueuedAudio(_pointer);
         }
+
+
+        public async Task WaitUntilPlayCompleteAsync(int interval = 100, CancellationToken cancellationToken = default)
+        {
+            while (GetStatus() == AudioStatus.Playing && GetQueuedAudioSize() > 0)
+            {
+                await Task.Delay(interval, cancellationToken);
+            }
+        }
+
+        public async Task<bool> WaitUntilPlayCompleteAsync(TimeSpan waitTime, int interval = 100, CancellationToken cancellationToken = default)
+        {
+            using CancellationTokenSource cancellationTokenSource = new CancellationTokenSource((int)waitTime.TotalMilliseconds);
+            while (GetStatus() == AudioStatus.Playing && GetQueuedAudioSize() > 0)
+            {
+                await Task.Delay(interval, cancellationToken);
+                if (cancellationTokenSource.IsCancellationRequested)
+                    return false;
+            }
+            return true;
+        }
     }
 }
