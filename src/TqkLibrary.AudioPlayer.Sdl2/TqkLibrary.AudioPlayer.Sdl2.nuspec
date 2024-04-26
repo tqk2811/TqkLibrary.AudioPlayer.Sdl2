@@ -37,7 +37,7 @@
 		<file src="..\x64\Release\TqkLibrary.AudioPlayer.Sdl2.Native.dll" target="runtimes\win-x64\native\" />
 		<file src="..\x64\Release\SDL2.dll" target="runtimes\win-x64\native\" />
 		<file src="..\x86\Release\TqkLibrary.AudioPlayer.Sdl2.Native.dll" target="runtimes\win-x86\native\" />
-		<file src="..\x86\Release\SDL2.dll" target="runtimes\win-x64\native\" />
+		<file src="..\x86\Release\SDL2.dll" target="runtimes\win-x86\native\" />
 
 		<file src="TqkLibrary.AudioPlayer.Sdl2.props" target="build\" />
 
