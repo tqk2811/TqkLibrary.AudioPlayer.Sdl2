@@ -6,7 +6,8 @@ SdlDevice::SdlDevice() {
 
 }
 SdlDevice::~SdlDevice() {
-
+	SDL_CloseAudioDevice(this->_deviceId);
+	this->_deviceId = 0;
 }
 
 BOOL SdlDevice::Init(const AVFrame* pFrame) {
