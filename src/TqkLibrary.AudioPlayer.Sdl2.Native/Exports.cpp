@@ -30,3 +30,11 @@ SdlSourceQueueResult SdlDevice_QueueAudio(SdlDevice* pSdlDevice, AVFrame* pFrame
 		return SdlSourceQueueResult::SdlSourceQueue_Failed;
 	return pSdlDevice->QueueAudio(pFrame);
 }
+
+VOID SdlDevice_Pause(SdlDevice* pSdlDevice, INT32 flag)
+{
+	if (pSdlDevice)
+	{
+		pSdlDevice->Pause(flag);
+	}
+}

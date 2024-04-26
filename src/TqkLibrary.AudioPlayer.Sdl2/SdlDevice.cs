@@ -35,5 +35,14 @@ namespace TqkLibrary.AudioPlayer.Sdl2
         {
             return NativeWrapper.SdlDevice_QueueAudio(_pointer, pFrame);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="flag">0 for remuse</param>
+        public void Pause(int flag = 0)
+        {
+            NativeWrapper.SdlDevice_Pause(_pointer, flag);
+        }
     }
 }

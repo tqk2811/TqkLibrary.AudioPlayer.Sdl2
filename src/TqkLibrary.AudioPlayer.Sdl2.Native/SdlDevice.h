@@ -16,6 +16,7 @@ public:
 	BOOL Init(const AVFrame* pFrame);
 
 	SdlSourceQueueResult QueueAudio(AVFrame* pFrame);
+	VOID Pause(INT32 flag);
 
 private:
 	AVSampleFormat _outFormat{ AV_SAMPLE_FMT_NONE };

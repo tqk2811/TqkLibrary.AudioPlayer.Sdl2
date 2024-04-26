@@ -128,3 +128,9 @@ SdlSourceQueueResult SdlDevice::QueueAudio(AVFrame* pFrame) {
 	}
 	return SdlSourceQueueResult::SdlSourceQueue_Success;
 }
+
+
+VOID SdlDevice::Pause(INT32 flag)
+{
+	SDL_PauseAudioDevice(this->_deviceId, flag);
+}
