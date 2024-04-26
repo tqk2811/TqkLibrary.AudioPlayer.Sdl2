@@ -54,3 +54,10 @@ UINT32 SdlDevice_GetQueuedAudioSize(SdlDevice* pSdlDevice)
 	}
 	return 0;
 }
+VOID SdlDevice_ClearQueuedAudio(SdlDevice* pSdlDevice)
+{
+	if (pSdlDevice)
+	{
+		pSdlDevice->ClearQueuedAudio();
+	}
+}

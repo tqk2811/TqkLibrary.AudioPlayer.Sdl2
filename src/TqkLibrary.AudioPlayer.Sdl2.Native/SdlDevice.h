@@ -19,6 +19,7 @@ public:
 	VOID Pause(INT32 flag);
 	SDL_AudioStatus GetStatus();
 	UINT32 GetQueuedAudioSize();
+	VOID ClearQueuedAudio();
 
 private:
 	AVSampleFormat _outFormat{ AV_SAMPLE_FMT_NONE };

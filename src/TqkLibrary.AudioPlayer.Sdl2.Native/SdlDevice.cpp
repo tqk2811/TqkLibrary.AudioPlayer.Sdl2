@@ -143,3 +143,8 @@ SDL_AudioStatus SdlDevice::GetStatus()
 UINT32 SdlDevice::GetQueuedAudioSize() {
 	return SDL_GetQueuedAudioSize(this->_deviceId);
 }
+
+VOID SdlDevice::ClearQueuedAudio()
+{
+	SDL_ClearQueuedAudio(this->_deviceId);
+}
