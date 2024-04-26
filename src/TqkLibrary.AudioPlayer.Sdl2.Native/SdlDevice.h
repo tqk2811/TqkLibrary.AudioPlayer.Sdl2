@@ -17,6 +17,7 @@ public:
 
 	SdlSourceQueueResult QueueAudio(AVFrame* pFrame);
 	VOID Pause(INT32 flag);
+	SDL_AudioStatus GetStatus();
 
 private:
 	AVSampleFormat _outFormat{ AV_SAMPLE_FMT_NONE };

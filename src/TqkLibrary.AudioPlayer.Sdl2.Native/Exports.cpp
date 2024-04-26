@@ -38,3 +38,11 @@ VOID SdlDevice_Pause(SdlDevice* pSdlDevice, INT32 flag)
 		pSdlDevice->Pause(flag);
 	}
 }
+SDL_AudioStatus SdlDevice_GetStatus(SdlDevice* pSdlDevice)
+{
+	if (pSdlDevice)
+	{
+		return pSdlDevice->GetStatus();
+	}
+	return (SDL_AudioStatus)-1;
+}

@@ -44,5 +44,10 @@ namespace TqkLibrary.AudioPlayer.Sdl2
         {
             NativeWrapper.SdlDevice_Pause(_pointer, flag);
         }
+
+        public AudioStatus GetStatus()
+        {
+            return NativeWrapper.SdlDevice_GetStatus(_pointer);
+        }
     }
 }

@@ -134,3 +134,8 @@ VOID SdlDevice::Pause(INT32 flag)
 {
 	SDL_PauseAudioDevice(this->_deviceId, flag);
 }
+
+SDL_AudioStatus SdlDevice::GetStatus()
+{
+	return SDL_GetAudioDeviceStatus(this->_deviceId);
+}
