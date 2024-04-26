@@ -5,6 +5,7 @@ TQKLIBRARYAUDIOPLAYERSDL2NATIVE__EXPORTS void SdlDevice_Free(SdlDevice** ppSdlDe
 TQKLIBRARYAUDIOPLAYERSDL2NATIVE__EXPORTS SdlSourceQueueResult SdlDevice_QueueAudio(SdlDevice* pSdlDevice, AVFrame* pFrame);
 TQKLIBRARYAUDIOPLAYERSDL2NATIVE__EXPORTS VOID SdlDevice_Pause(SdlDevice* pSdlDevice, INT32 flag);
 TQKLIBRARYAUDIOPLAYERSDL2NATIVE__EXPORTS SDL_AudioStatus SdlDevice_GetStatus(SdlDevice* pSdlDevice);
+TQKLIBRARYAUDIOPLAYERSDL2NATIVE__EXPORTS UINT32 SdlDevice_GetQueuedAudioSize(SdlDevice* pSdlDevice);
 
 
 #endif // !ScrcpyNativeExports_H

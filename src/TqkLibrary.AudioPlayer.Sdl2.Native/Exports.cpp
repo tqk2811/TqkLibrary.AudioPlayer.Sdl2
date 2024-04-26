@@ -46,3 +46,11 @@ SDL_AudioStatus SdlDevice_GetStatus(SdlDevice* pSdlDevice)
 	}
 	return (SDL_AudioStatus)-1;
 }
+UINT32 SdlDevice_GetQueuedAudioSize(SdlDevice* pSdlDevice)
+{
+	if (pSdlDevice)
+	{
+		return pSdlDevice->GetQueuedAudioSize();
+	}
+	return 0;
+}

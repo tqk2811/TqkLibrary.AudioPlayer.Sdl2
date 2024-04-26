@@ -47,5 +47,8 @@ namespace TqkLibrary.AudioPlayer.Sdl2
         [DllImport("TqkLibrary.AudioPlayer.Sdl2.Native.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
         internal static extern AudioStatus SdlDevice_GetStatus(IntPtr pSdlDevice);
 
+
+        [DllImport("TqkLibrary.AudioPlayer.Sdl2.Native.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern uint SdlDevice_GetQueuedAudioSize(IntPtr pSdlDevice);
     }
 }
