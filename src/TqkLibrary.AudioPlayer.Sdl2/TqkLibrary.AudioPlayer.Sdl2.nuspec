@@ -12,18 +12,15 @@
 		<readme>docs\README.md</readme>
 		<dependencies>
 			<group targetFramework="net462">
-				<dependency id="TqkLibrary.FFmpeg.GplShared" version="5.1.2" />
 			</group>
 			<group targetFramework="net5.0-windows7.0">
-				<dependency id="TqkLibrary.FFmpeg.GplShared" version="5.1.2" />
 			</group>
 			<group targetFramework="net6.0-windows7.0">
-				<dependency id="TqkLibrary.FFmpeg.GplShared" version="5.1.2" />
 			</group>
 			<group targetFramework="net8.0-windows7.0">
-				<dependency id="TqkLibrary.FFmpeg.GplShared" version="5.1.2" />
 			</group>
 		</dependencies>
+
 		<contentFiles>
 			<files include="**/*.*" copyToOutput="true" buildAction="None"/>
 		</contentFiles>

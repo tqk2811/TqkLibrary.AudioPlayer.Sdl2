@@ -10,8 +10,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="TqkLibrary.AudioPlayer.FFmpegAudioReader" Version="1.0.0" />
 	</ItemGroup>
+
 
 	<ItemGroup>
 		<ProjectReference Include="..\TqkLibrary.AudioPlayer.Sdl2\TqkLibrary.AudioPlayer.Sdl2.csproj" />

@@ -1,15 +1,16 @@
 #include "pch.h"
 #include "Exports.h"
-SdlDevice* SdlDevice_Alloc(const AVFrame* pFrame)
+SdlDevice* SdlDevice_Alloc(int freq, Uint8 channels, SDL_AudioFormat format)
 {
 	SetLastError(0);
 	SdlDevice* pdevice = new SdlDevice();
-	if (pdevice->Init(pFrame))
+	if (pdevice->Init(freq, channels, format))
 	{
 		return pdevice;
 	}
 	else
 	{
+		delete pdevice;
 		return nullptr;
 	}
 }
@@ -25,12 +26,12 @@ void SdlDevice_Free(SdlDevice** ppSdlDevice)
 		}
 	}
 }
-SdlSourceQueueResult SdlDevice_QueueAudio(SdlDevice* pSdlDevice, AVFrame* pFrame)
+SdlSourceQueueResult SdlDevice_QueueAudio(SdlDevice* pSdlDevice, const Uint8* data, Uint32 len)
 {
 	SetLastError(0);
 	if (!pSdlDevice)
 		return SdlSourceQueueResult::SdlSourceQueue_Failed;
-	return pSdlDevice->QueueAudio(pFrame);
+	return pSdlDevice->QueueAudio(data, len);
 }
 
 VOID SdlDevice_Pause(SdlDevice* pSdlDevice, INT32 flag)

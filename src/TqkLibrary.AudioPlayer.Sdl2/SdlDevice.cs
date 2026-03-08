@@ -10,9 +10,9 @@ namespace TqkLibrary.AudioPlayer.Sdl2
     {
         IntPtr _pointer = IntPtr.Zero;
         internal IntPtr Pointer { get { return _pointer; } }
-        public SdlDevice(IntPtr pFrame)
+        public SdlDevice(int freq, byte channels, SdlAudioFormat format)
         {
-            _pointer = NativeWrapper.SdlDevice_Alloc(pFrame);
+            _pointer = NativeWrapper.SdlDevice_Alloc(freq, channels, (ushort)format);
             if (_pointer == IntPtr.Zero)
                 throw new ApplicationException($"Create and load {nameof(SdlDevice)} failed (last error : {NativeWrapper.GetLastError()})");
         }
@@ -31,9 +31,9 @@ namespace TqkLibrary.AudioPlayer.Sdl2
                 NativeWrapper.SdlDevice_Free(ref _pointer);
         }
 
-        public SdlSourceQueueResult QueueAudio(IntPtr pFrame)
+        public SdlSourceQueueResult QueueAudio(byte[] data)
         {
-            return NativeWrapper.SdlDevice_QueueAudio(_pointer, pFrame);
+            return NativeWrapper.SdlDevice_QueueAudio(_pointer, data, (uint)data.Length);
         }
 
         /// <summary>

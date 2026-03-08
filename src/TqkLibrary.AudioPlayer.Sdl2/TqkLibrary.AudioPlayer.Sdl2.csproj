@@ -37,8 +37,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="TqkLibrary.FFmpeg.GplShared" Version="5.1.2" />
 	</ItemGroup>
+
 
 
 </Project>

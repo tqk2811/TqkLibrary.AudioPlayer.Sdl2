@@ -11,12 +11,9 @@
 #include <windows.h>
 #include <assert.h>
 #include <SDL.h>
-#include "libav.h"
 
-typedef class SwrConvert SwrConvert;
 typedef enum SdlSourceQueueResult SdlSourceQueueResult;
 #include "SdlDevice.h"
-#include "SwrConvert.h"
 
 #include "Exports.h"
 

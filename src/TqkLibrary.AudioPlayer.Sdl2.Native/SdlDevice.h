@@ -13,18 +13,15 @@ public:
 	SdlDevice();
 	~SdlDevice();
 
-	BOOL Init(const AVFrame* pFrame);
+	BOOL Init(int freq, Uint8 channels, SDL_AudioFormat format);
 
-	SdlSourceQueueResult QueueAudio(AVFrame* pFrame);
+	SdlSourceQueueResult QueueAudio(const Uint8* data, Uint32 len);
 	VOID Pause(INT32 flag);
 	SDL_AudioStatus GetStatus();
 	UINT32 GetQueuedAudioSize();
 	VOID ClearQueuedAudio();
 
 private:
-	AVSampleFormat _outFormat{ AV_SAMPLE_FMT_NONE };
-	AVChannelLayout _outChlayout{  };
 	SDL_AudioDeviceID _deviceId{ 0 };
-	SwrConvert* _swrConvert{ nullptr };
 };
 #endif
