@@ -10,6 +10,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="TqkLibrary.FFmpeg.Tools.Win.x64" Version="8.0.1.48" />
 	</ItemGroup>
 
 
@@ -18,7 +19,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Update="test-tube-194556.mp3">
+		<None Update="01 Rainbow.mp3">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 	</ItemGroup>
