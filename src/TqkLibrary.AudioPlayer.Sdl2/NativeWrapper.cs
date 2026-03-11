@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
+using TqkLibrary.AudioPlayer.Sdl2.Enums;
 
 namespace TqkLibrary.AudioPlayer.Sdl2
 {

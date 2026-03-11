@@ -1,4 +1,4 @@
-namespace TqkLibrary.AudioPlayer.Sdl2
+namespace TqkLibrary.AudioPlayer.Sdl2.Enums
 {
     /// <summary>
     /// SDL Audio Format values matching SDL_AudioFormat (Uint16)

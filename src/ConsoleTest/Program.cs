@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using TqkLibrary.AudioPlayer.Sdl2.Enums;
 
 string filePath = "01 Rainbow.mp3";
 if (!File.Exists(filePath))
