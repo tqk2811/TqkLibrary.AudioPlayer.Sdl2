@@ -10,7 +10,4 @@ TQKLIBRARYAUDIOPLAYERSDL2NATIVE__EXPORTS VOID SdlDevice_ClearQueuedAudio(SdlDevi
 TQKLIBRARYAUDIOPLAYERSDL2NATIVE__EXPORTS int SdlDevice_GetNumAudioDevices();
 TQKLIBRARYAUDIOPLAYERSDL2NATIVE__EXPORTS const char* SdlDevice_GetAudioDeviceName(int index);
 
-TQKLIBRARYAUDIOPLAYERSDL2NATIVE__EXPORTS FLOAT SdlDevice_GetVolume(SdlDevice* pSdlDevice);
-TQKLIBRARYAUDIOPLAYERSDL2NATIVE__EXPORTS VOID SdlDevice_SetVolume(SdlDevice* pSdlDevice, FLOAT volume);
-
 #endif // !TqkLibraryAudioPlayerSdl2Native_H
