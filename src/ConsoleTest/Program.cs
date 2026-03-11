@@ -77,6 +77,7 @@ process.ErrorDataReceived += (s, e) => { if (e.Data != null) Console.Error.Write
 process.BeginErrorReadLine();
 
 byte[] buffer = new byte[sampleRate * channels * (bitsPerSample / 8) / 10]; // 100ms buffer
+float volume = 1.0f;
 
 var readTask = Task.Run(async () =>
 {
@@ -104,7 +105,7 @@ var readTask = Task.Run(async () =>
             SdlSourceQueueResult queueResult;
             do
             {
-                queueResult = device.QueueAudio(dataToQueue);
+                queueResult = device.QueueAudio(dataToQueue, volume);
                 if (device.GetQueuedAudioSize() > buffer.Length * 2) // Basic flow control
                 {
                     await Task.Delay(10, cts.Token);
@@ -139,6 +140,20 @@ while (!readTask.IsCompleted)
             cts.Cancel();
             try { process.Kill(); } catch { }
             break;
+        }
+
+        switch (keyInfo.Key)
+        {
+            case ConsoleKey.UpArrow:
+            case ConsoleKey.DownArrow:
+                volume += (keyInfo.Key == ConsoleKey.UpArrow ? 0.1f : -0.1f);
+                Console.WriteLine($"Volume: {volume:F1}");
+                break;
+
+            case ConsoleKey.R:
+                volume = 1.0f;
+                Console.WriteLine("Reset Audio Settings");
+                break;
         }
     }
     await Task.Delay(100);

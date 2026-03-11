@@ -39,9 +39,9 @@ namespace TqkLibrary.AudioPlayer.Sdl2
                 NativeWrapper.SdlDevice_Free(ref _pointer);
         }
 
-        public SdlSourceQueueResult QueueAudio(byte[] data)
+        public SdlSourceQueueResult QueueAudio(byte[] data, float volume = 1.0f)
         {
-            return NativeWrapper.SdlDevice_QueueAudio(_pointer, data, (uint)data.Length);
+            return NativeWrapper.SdlDevice_QueueAudio(_pointer, data, (uint)data.Length, volume);
         }
 
         /// <summary>

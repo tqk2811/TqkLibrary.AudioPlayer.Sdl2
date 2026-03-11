@@ -26,12 +26,12 @@ void SdlDevice_Free(SdlDevice** ppSdlDevice)
 		}
 	}
 }
-SdlSourceQueueResult SdlDevice_QueueAudio(SdlDevice* pSdlDevice, const Uint8* data, Uint32 len)
+SdlSourceQueueResult SdlDevice_QueueAudio(SdlDevice* pSdlDevice, const Uint8* data, Uint32 len, FLOAT volume)
 {
 	SetLastError(0);
 	if (!pSdlDevice)
 		return SdlSourceQueueResult::SdlSourceQueue_Failed;
-	return pSdlDevice->QueueAudio(data, len);
+	return pSdlDevice->QueueAudio(data, len, volume);
 }
 
 VOID SdlDevice_Pause(SdlDevice* pSdlDevice, INT32 flag)

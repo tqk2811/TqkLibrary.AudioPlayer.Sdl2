@@ -15,7 +15,7 @@ public:
 
 	BOOL Init(const char* deviceName, int freq, Uint8 channels, SDL_AudioFormat format);
 
-	SdlSourceQueueResult QueueAudio(const Uint8* data, Uint32 len);
+	SdlSourceQueueResult QueueAudio(const Uint8* data, Uint32 len, FLOAT volume);
 	VOID Pause(INT32 flag);
 	SDL_AudioStatus GetStatus();
 	UINT32 GetQueuedAudioSize();
@@ -23,5 +23,6 @@ public:
 
 private:
 	SDL_AudioDeviceID _deviceId{ 0 };
+	SDL_AudioFormat _format{ 0 };
 };
 #endif

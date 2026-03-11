@@ -38,7 +38,7 @@ namespace TqkLibrary.AudioPlayer.Sdl2
 
 
         [DllImport("TqkLibrary.AudioPlayer.Sdl2.Native.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern SdlSourceQueueResult SdlDevice_QueueAudio(IntPtr pSdlDevice, byte[] data, uint len);
+        internal static extern SdlSourceQueueResult SdlDevice_QueueAudio(IntPtr pSdlDevice, byte[] data, uint len, float volume);
 
 
         [DllImport("TqkLibrary.AudioPlayer.Sdl2.Native.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
