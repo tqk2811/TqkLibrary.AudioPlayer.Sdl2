@@ -13,6 +13,14 @@ namespace TqkLibrary.AudioPlayer.Sdl2
     {
         IntPtr _pointer = IntPtr.Zero;
         internal IntPtr Pointer { get { return _pointer; } }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="freq"></param>
+        /// <param name="channels"></param>
+        /// <param name="format"></param>
+        /// <param name="deviceName"><see cref="GetAudioDeviceNames"/></param>
+        /// <exception cref="ApplicationException"></exception>
         public SdlDevice(int freq, byte channels, SdlAudioFormat format, string? deviceName = null)
         {
             byte[]? deviceNameBytes = null;
