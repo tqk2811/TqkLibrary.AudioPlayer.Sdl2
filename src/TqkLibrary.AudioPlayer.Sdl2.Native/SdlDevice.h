@@ -13,7 +13,7 @@ public:
 	SdlDevice();
 	~SdlDevice();
 
-	BOOL Init(int freq, Uint8 channels, SDL_AudioFormat format);
+	BOOL Init(const char* deviceName, int freq, Uint8 channels, SDL_AudioFormat format);
 
 	SdlSourceQueueResult QueueAudio(const Uint8* data, Uint32 len);
 	VOID Pause(INT32 flag);

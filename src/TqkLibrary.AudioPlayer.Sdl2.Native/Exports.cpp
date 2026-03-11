@@ -1,10 +1,10 @@
 #include "pch.h"
 #include "Exports.h"
-SdlDevice* SdlDevice_Alloc(int freq, Uint8 channels, SDL_AudioFormat format)
+SdlDevice* SdlDevice_Alloc(const char* deviceName, int freq, Uint8 channels, SDL_AudioFormat format)
 {
 	SetLastError(0);
 	SdlDevice* pdevice = new SdlDevice();
-	if (pdevice->Init(freq, channels, format))
+	if (pdevice->Init(deviceName, freq, channels, format))
 	{
 		return pdevice;
 	}
@@ -67,4 +67,14 @@ VOID SdlDevice_ClearQueuedAudio(SdlDevice* pSdlDevice)
 	{
 		pSdlDevice->ClearQueuedAudio();
 	}
+}
+int SdlDevice_GetNumAudioDevices()
+{
+	SetLastError(0);
+	return SDL_GetNumAudioDevices(0);
+}
+const char* SdlDevice_GetAudioDeviceName(int index)
+{
+	SetLastError(0);
+	return SDL_GetAudioDeviceName(index, 0);
 }

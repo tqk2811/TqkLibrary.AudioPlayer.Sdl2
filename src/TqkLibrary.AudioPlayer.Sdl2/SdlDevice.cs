@@ -1,8 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 using TqkLibrary.AudioPlayer.Sdl2.Enums;
 
 namespace TqkLibrary.AudioPlayer.Sdl2
@@ -11,9 +13,14 @@ namespace TqkLibrary.AudioPlayer.Sdl2
     {
         IntPtr _pointer = IntPtr.Zero;
         internal IntPtr Pointer { get { return _pointer; } }
-        public SdlDevice(int freq, byte channels, SdlAudioFormat format)
+        public SdlDevice(int freq, byte channels, SdlAudioFormat format, string? deviceName = null)
         {
-            _pointer = NativeWrapper.SdlDevice_Alloc(freq, channels, (ushort)format);
+            byte[]? deviceNameBytes = null;
+            if (!string.IsNullOrEmpty(deviceName))
+            {
+                deviceNameBytes = Encoding.UTF8.GetBytes(deviceName + "\0");
+            }
+            _pointer = NativeWrapper.SdlDevice_Alloc(deviceNameBytes, freq, channels, (ushort)format);
             if (_pointer == IntPtr.Zero)
                 throw new ApplicationException($"Create and load {nameof(SdlDevice)} failed (last error : {NativeWrapper.GetLastError()})");
         }
@@ -59,6 +66,26 @@ namespace TqkLibrary.AudioPlayer.Sdl2
         public void ClearQueuedAudio()
         {
             NativeWrapper.SdlDevice_ClearQueuedAudio(_pointer);
+        }
+
+        public static IEnumerable<string> GetAudioDeviceNames()
+        {
+            int count = NativeWrapper.SdlDevice_GetNumAudioDevices();
+            for (int i = 0; i < count; i++)
+            {
+                IntPtr ptr = NativeWrapper.SdlDevice_GetAudioDeviceName(i);
+                if (ptr != IntPtr.Zero)
+                {
+                    List<byte> bytes = new List<byte>();
+                    int offset = 0;
+                    byte b;
+                    while ((b = Marshal.ReadByte(ptr, offset++)) != 0)
+                    {
+                        bytes.Add(b);
+                    }
+                    yield return Encoding.UTF8.GetString(bytes.ToArray());
+                }
+            }
         }
 
 

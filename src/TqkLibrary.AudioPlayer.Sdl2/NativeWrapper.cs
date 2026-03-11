@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using TqkLibrary.AudioPlayer.Sdl2.Enums;
 
@@ -30,7 +30,7 @@ namespace TqkLibrary.AudioPlayer.Sdl2
 
 
         [DllImport("TqkLibrary.AudioPlayer.Sdl2.Native.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern IntPtr SdlDevice_Alloc(int freq, byte channels, ushort format);
+        internal static extern IntPtr SdlDevice_Alloc(byte[]? deviceName, int freq, byte channels, ushort format);
 
 
         [DllImport("TqkLibrary.AudioPlayer.Sdl2.Native.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
@@ -55,5 +55,11 @@ namespace TqkLibrary.AudioPlayer.Sdl2
 
         [DllImport("TqkLibrary.AudioPlayer.Sdl2.Native.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void SdlDevice_ClearQueuedAudio(IntPtr pSdlDevice);
+
+        [DllImport("TqkLibrary.AudioPlayer.Sdl2.Native.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int SdlDevice_GetNumAudioDevices();
+
+        [DllImport("TqkLibrary.AudioPlayer.Sdl2.Native.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr SdlDevice_GetAudioDeviceName(int index);
     }
 }

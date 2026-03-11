@@ -10,14 +10,14 @@ SdlDevice::~SdlDevice() {
 	this->_deviceId = 0;
 }
 
-BOOL SdlDevice::Init(int freq, Uint8 channels, SDL_AudioFormat format) {
+BOOL SdlDevice::Init(const char* deviceName, int freq, Uint8 channels, SDL_AudioFormat format) {
 	SDL_AudioSpec want, have;
 	SDL_zero(want);
 	SDL_zero(have);
 	want.freq = freq;
 	want.channels = channels;
 	want.format = format;
-	this->_deviceId = SDL_OpenAudioDevice(NULL, 0, &want, &have, 0);
+	this->_deviceId = SDL_OpenAudioDevice(deviceName, 0, &want, &have, 0);
 	SDL_PauseAudioDevice(this->_deviceId, 0);
 	return this->_deviceId != 0;
 }

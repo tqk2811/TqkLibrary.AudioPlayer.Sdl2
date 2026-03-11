@@ -32,11 +32,23 @@ Console.WriteLine($"Opening file: {filePath}");
 // We'll force ffmpeg to output specific PCM format
 byte channels = 2;
 int sampleRate = 48000;
-int bitsPerSample = 16; 
+int bitsPerSample = 16;
 
 Console.WriteLine($"Target Info: {channels} channels, {sampleRate}Hz (forced via ffmpeg)");
 
-using SdlDevice device = new SdlDevice(sampleRate, channels, SdlAudioFormat.AUDIO_S16);
+var devices = SdlDevice.GetAudioDeviceNames().ToArray();
+string? deviceSelected = null;
+for (int i = 0; i < devices.Length; i++)
+{
+    Console.WriteLine($"\t{i}: {devices[i]}");
+}
+Console.Write("SelectDevice Index:");
+if (int.TryParse(Console.ReadLine()?.Trim(), out int result))
+{
+    deviceSelected = devices.Skip(result).FirstOrDefault();
+}
+
+using SdlDevice device = new SdlDevice(sampleRate, channels, SdlAudioFormat.AUDIO_S16, deviceSelected);
 
 // SdlDevice_Alloc (constructor) already initialzes and starts (SDL_PauseAudioDevice 0)
 // But we can call Pause(0) to be sure
@@ -68,7 +80,7 @@ byte[] buffer = new byte[sampleRate * channels * (bitsPerSample / 8) / 10]; // 1
 
 var readTask = Task.Run(async () =>
 {
-    try 
+    try
     {
         using var stdout = process.StandardOutput.BaseStream;
         while (!cts.Token.IsCancellationRequested)
@@ -78,12 +90,12 @@ var readTask = Task.Run(async () =>
             while (totalRead < bytesToRead)
             {
                 int read = await stdout.ReadAsync(buffer, totalRead, bytesToRead - totalRead, cts.Token);
-                if (read == 0) 
+                if (read == 0)
                     break;
                 totalRead += read;
             }
 
-            if (totalRead == 0) 
+            if (totalRead == 0)
                 break;
 
             byte[] dataToQueue = new byte[totalRead];
@@ -105,7 +117,7 @@ var readTask = Task.Run(async () =>
                 break;
             }
         }
-        
+
         Console.WriteLine("Waiting for playback to complete...");
         await device.WaitUntilPlayCompleteAsync(cancellationToken: cts.Token);
         Console.WriteLine("Playback finished.");
