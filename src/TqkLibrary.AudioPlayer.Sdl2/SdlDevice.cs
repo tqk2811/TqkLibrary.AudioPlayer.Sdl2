@@ -58,6 +58,12 @@ namespace TqkLibrary.AudioPlayer.Sdl2
             return NativeWrapper.SdlDevice_GetStatus(_pointer);
         }
 
+        public float Volume
+        {
+            get { return NativeWrapper.SdlDevice_GetVolume(_pointer); }
+            set { NativeWrapper.SdlDevice_SetVolume(_pointer, value); }
+        }
+
         public uint GetQueuedAudioSize()
         {
             return NativeWrapper.SdlDevice_GetQueuedAudioSize(_pointer);

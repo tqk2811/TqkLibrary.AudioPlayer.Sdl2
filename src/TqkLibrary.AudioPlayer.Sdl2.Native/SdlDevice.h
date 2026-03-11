@@ -21,7 +21,12 @@ public:
 	UINT32 GetQueuedAudioSize();
 	VOID ClearQueuedAudio();
 
+	FLOAT GetVolume();
+	VOID SetVolume(FLOAT volume);
+
 private:
 	SDL_AudioDeviceID _deviceId{ 0 };
+	FLOAT _volume{ 1.0f };
+	SDL_AudioFormat _format{ 0 };
 };
 #endif

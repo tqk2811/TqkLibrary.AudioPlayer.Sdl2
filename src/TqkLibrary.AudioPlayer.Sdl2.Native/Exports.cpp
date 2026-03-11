@@ -78,3 +78,22 @@ const char* SdlDevice_GetAudioDeviceName(int index)
 	SetLastError(0);
 	return SDL_GetAudioDeviceName(index, 0);
 }
+
+FLOAT SdlDevice_GetVolume(SdlDevice* pSdlDevice)
+{
+	SetLastError(0);
+	if (pSdlDevice)
+	{
+		return pSdlDevice->GetVolume();
+	}
+	return 1.0f;
+}
+
+VOID SdlDevice_SetVolume(SdlDevice* pSdlDevice, FLOAT volume)
+{
+	SetLastError(0);
+	if (pSdlDevice)
+	{
+		pSdlDevice->SetVolume(volume);
+	}
+}

@@ -61,5 +61,11 @@ namespace TqkLibrary.AudioPlayer.Sdl2
 
         [DllImport("TqkLibrary.AudioPlayer.Sdl2.Native.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
         internal static extern IntPtr SdlDevice_GetAudioDeviceName(int index);
+
+        [DllImport("TqkLibrary.AudioPlayer.Sdl2.Native.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern float SdlDevice_GetVolume(IntPtr pSdlDevice);
+
+        [DllImport("TqkLibrary.AudioPlayer.Sdl2.Native.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void SdlDevice_SetVolume(IntPtr pSdlDevice, float volume);
     }
 }
