@@ -10,8 +10,10 @@ namespace TqkLibrary.AudioPlayer.Sdl2
 #if NETFRAMEWORK
         static NativeWrapper()
         {
+            string assemblyLocation = Assembly.GetEntryAssembly()?.Location
+                ?? throw new InvalidOperationException("Cannot determine entry assembly location.");
             string path = Path.Combine(
-                Path.GetDirectoryName(Assembly.GetEntryAssembly()!.Location)!,
+                Path.GetDirectoryName(assemblyLocation)!,
                 "runtimes",
                 Environment.Is64BitProcess ? "win-x64" : "win-x86",
                 "native"
