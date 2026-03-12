@@ -77,7 +77,7 @@ process.ErrorDataReceived += (s, e) => { if (e.Data != null) Console.Error.Write
 process.BeginErrorReadLine();
 
 byte[] buffer = new byte[sampleRate * channels * (bitsPerSample / 8) / 10]; // 100ms buffer
-float volume = 1.0f;
+int volumeBits = BitConverter.SingleToInt32Bits(1.0f);
 
 var readTask = Task.Run(async () =>
 {
@@ -105,7 +105,7 @@ var readTask = Task.Run(async () =>
             SdlSourceQueueResult queueResult;
             do
             {
-                queueResult = device.QueueAudio(dataToQueue, volume);
+                queueResult = device.QueueAudio(dataToQueue, BitConverter.Int32BitsToSingle(Volatile.Read(ref volumeBits)));
                 if (device.GetQueuedAudioSize() > buffer.Length * 2) // Basic flow control
                 {
                     await Task.Delay(10, cts.Token);
@@ -146,12 +146,14 @@ while (!readTask.IsCompleted)
         {
             case ConsoleKey.UpArrow:
             case ConsoleKey.DownArrow:
-                volume += (keyInfo.Key == ConsoleKey.UpArrow ? 0.1f : -0.1f);
-                Console.WriteLine($"Volume: {volume:F1}");
+                float newVolume = BitConverter.Int32BitsToSingle(Volatile.Read(ref volumeBits))
+                    + (keyInfo.Key == ConsoleKey.UpArrow ? 0.1f : -0.1f);
+                Volatile.Write(ref volumeBits, BitConverter.SingleToInt32Bits(newVolume));
+                Console.WriteLine($"Volume: {newVolume:F1}");
                 break;
 
             case ConsoleKey.R:
-                volume = 1.0f;
+                Volatile.Write(ref volumeBits, BitConverter.SingleToInt32Bits(1.0f));
                 Console.WriteLine("Reset Audio Settings");
                 break;
         }
