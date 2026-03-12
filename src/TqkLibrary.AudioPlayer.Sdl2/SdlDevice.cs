@@ -88,7 +88,7 @@ namespace TqkLibrary.AudioPlayer.Sdl2
                     List<byte> bytes = new List<byte>();
                     int offset = 0;
                     byte b;
-                    while ((b = Marshal.ReadByte(ptr, offset++)) != 0)
+                    while (offset < 4096 && (b = Marshal.ReadByte(ptr, offset++)) != 0)
                     {
                         bytes.Add(b);
                     }
