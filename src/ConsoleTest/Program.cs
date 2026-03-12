@@ -138,7 +138,7 @@ while (!readTask.IsCompleted)
         if (keyInfo.Key == ConsoleKey.Q)
         {
             cts.Cancel();
-            try { process.Kill(); } catch { }
+            try { process.Kill(); } catch (InvalidOperationException) { } // process already exited
             break;
         }
 
