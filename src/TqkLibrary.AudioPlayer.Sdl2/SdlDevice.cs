@@ -107,14 +107,20 @@ namespace TqkLibrary.AudioPlayer.Sdl2
 
         public async Task<bool> WaitUntilPlayCompleteAsync(TimeSpan waitTime, int interval = 100, CancellationToken cancellationToken = default)
         {
-            using CancellationTokenSource cancellationTokenSource = new CancellationTokenSource((int)waitTime.TotalMilliseconds);
-            while (GetStatus() == AudioStatus.Playing && GetQueuedAudioSize() > 0)
+            using CancellationTokenSource timeoutCts = new CancellationTokenSource((int)waitTime.TotalMilliseconds);
+            using CancellationTokenSource linkedCts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, timeoutCts.Token);
+            try
             {
-                await Task.Delay(interval, cancellationToken);
-                if (cancellationTokenSource.IsCancellationRequested)
-                    return false;
+                while (GetStatus() == AudioStatus.Playing && GetQueuedAudioSize() > 0)
+                {
+                    await Task.Delay(interval, linkedCts.Token);
+                }
+                return true;
             }
-            return true;
+            catch (OperationCanceledException) when (timeoutCts.IsCancellationRequested)
+            {
+                return false;
+            }
         }
     }
 }
