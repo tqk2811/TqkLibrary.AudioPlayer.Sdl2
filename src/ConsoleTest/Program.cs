@@ -56,7 +56,7 @@ device.Pause(0);
 
 Console.WriteLine("Playing... Press 'Q' to quit.");
 
-CancellationTokenSource cts = new CancellationTokenSource();
+using CancellationTokenSource cts = new CancellationTokenSource();
 
 // Use a direct approach with Process to stream data block by block.
 var processStartInfo = new ProcessStartInfo
