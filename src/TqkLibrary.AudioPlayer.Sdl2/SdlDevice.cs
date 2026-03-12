@@ -49,6 +49,7 @@ namespace TqkLibrary.AudioPlayer.Sdl2
 
         public SdlSourceQueueResult QueueAudio(byte[] data, float volume = 1.0f)
         {
+            if (data is null) throw new ArgumentNullException(nameof(data));
             return NativeWrapper.SdlDevice_QueueAudio(_pointer, data, (uint)data.Length, volume);
         }
 
